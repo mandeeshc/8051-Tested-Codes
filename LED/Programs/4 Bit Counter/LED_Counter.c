@@ -16,7 +16,7 @@ void main()								// Main function
     for(k=0;k<15;k++)
 		{ 
 			P2++;
-			delay(1000);
+			delay(100);
     }
 	}  
 }
