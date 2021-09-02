@@ -1,0 +1,46 @@
+C51 COMPILER V9.59.0.0   LED_COUNTER                                                       09/02/2021 15:18:13 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LED_COUNTER
+OBJECT MODULE PLACED IN LED_Counter.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE LED_Counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF LED_Counter.c: SERIAL NUMBER EXPIRED
+   1          // ***** Program for a 4-bit Binary Counter ***** //
+   2          #include <REGX51.H>           // Header File
+   3          #define LED P2              // P2 defined as LED 
+   4          void delay(unsigned int del)      // Function declared and defined before main function 
+   5          {
+   6   1        unsigned int i,j;         // Declaration of Variables
+   7   1        for(i=0;i<=1275;i++)        // Use of for Loops
+   8   1          for(j=0;j<=del;j++);
+   9   1      }
+  10          void main()               // Main function
+  11          {
+  12   1        while(1)                // While(1) : Repeat forever
+  13   1        { 
+  14   2          unsigned char k;
+  15   2          P2=0x00; 
+  16   2          for(k=0;k<15;k++)
+  17   2          { 
+  18   3            P2++;
+  19   3            delay(1000);
+  20   3          }
+  21   2        }  
+  22   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     61    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

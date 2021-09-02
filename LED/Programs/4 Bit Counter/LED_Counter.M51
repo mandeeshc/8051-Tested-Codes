@@ -1,0 +1,92 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/02/2021  15:18:14  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE LED_Counter.obj TO LED_Counter RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  LED_Counter.obj (LED_COUNTER)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  LED_Counter (LED_COUNTER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0020H     UNIT         ?PR?_DELAY?LED_COUNTER
+            CODE    0023H     001DH     UNIT         ?PR?MAIN?LED_COUNTER
+            CODE    0040H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   LED_Counter (LED_COUNTER)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?LED_COUNTER
+
+?PR?MAIN?LED_COUNTER           0008H    0001H
+  +--> ?PR?_DELAY?LED_COUNTER
+
+
+
+SYMBOL TABLE OF MODULE:  LED_Counter (LED_COUNTER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LED_COUNTER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0003H         PUBLIC        _delay
+  C:0023H         PUBLIC        main
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        del
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/02/2021  15:18:14  PAGE 2
+
+
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0003H         LINE#         7
+  C:0006H         LINE#         8
+  C:0022H         LINE#         9
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        k
+  -------         ENDDO         
+  C:0023H         LINE#         10
+  C:0023H         LINE#         11
+  C:0023H         LINE#         12
+  C:0023H         LINE#         13
+  C:0023H         LINE#         15
+  C:0026H         LINE#         16
+  C:0033H         LINE#         17
+  C:0033H         LINE#         18
+  C:0035H         LINE#         19
+  C:003CH         LINE#         20
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LED_COUNTER
+
+Program Size: data=10.0 xdata=0 code=76
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

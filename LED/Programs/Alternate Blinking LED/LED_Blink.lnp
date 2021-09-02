@@ -1,0 +1,3 @@
+"LED_Blink.obj" 
+TO "LED_Blink" 
+RAMSIZE(256) 

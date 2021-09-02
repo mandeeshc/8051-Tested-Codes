@@ -1,0 +1,45 @@
+C51 COMPILER V9.59.0.0   LED_RUNNING                                                       09/02/2021 15:19:09 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LED_RUNNING
+OBJECT MODULE PLACED IN LED_Running.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE LED_Running.c ROM(SMALL) OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TAB
+                    -S(2)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF LED_Running.c: SERIAL NUMBER EXPIRED
+   1          // ***** Program for Running LED's on Port 2 ***** //
+   2          #include <REGX51.H>           // Header File
+   3          #define LED P2
+   4          void delay(unsigned int del)
+   5          {
+   6   1        unsigned int i,j;
+   7   1        for(i=0;i<=1275;i++)
+   8   1          for(j=0;j<=del;j++);
+   9   1      }
+  10          void main()
+  11          {
+  12   1        unsigned int i;
+  13   1        LED=0x01;
+  14   1        delay(100);
+  15   1        for(i=0;i<7;i++)
+  16   1        {
+  17   2          LED=LED<<1;
+  18   2          delay(100);
+  19   2        }
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     66    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

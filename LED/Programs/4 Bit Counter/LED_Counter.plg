@@ -1,0 +1,26 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+A:\BMES\Clients\CMC\2012\Peripherals\LED\2\LED_Counter.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling LED_Counter.c...
+linking...
+Program Size: data=10.0 xdata=0 code=72
+creating hex file from "LED_Counter"...
+"LED_Counter" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=10.0 xdata=0 code=72
+creating hex file from "LED_Counter"...
+"LED_Counter" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling LED_Counter.c...
+linking...
+Program Size: data=10.0 xdata=0 code=72
+creating hex file from "LED_Counter"...
+"LED_Counter" - 0 Error(s), 0 Warning(s).

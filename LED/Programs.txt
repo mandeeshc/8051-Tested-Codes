@@ -1,0 +1,4 @@
+# 1 : WAP to Blink Alternate LED's on Port 2
+# 2 : WAP to Generate a 4 Bit Counter on Port 2
+# 3 : WAP to Generate Running LED Pattern on Port 2
+# 4 : WAP to Generate a Curtain Pattern on Port 2 (Do it Yourself)

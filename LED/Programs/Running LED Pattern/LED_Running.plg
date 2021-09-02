@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+C:\Users\sony\Desktop\CMC\Assignments\LED\3\LED_Running.uv2
+Project File Date:  06/20/2011
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling LED_Running.c...
+linking...
+Program Size: data=9.0 xdata=0 code=83
+creating hex file from "LED_Running"...
+"LED_Running" - 0 Error(s), 0 Warning(s).
