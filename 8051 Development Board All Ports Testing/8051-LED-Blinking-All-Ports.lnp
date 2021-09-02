@@ -1,0 +1,3 @@
+"main.obj" 
+TO "8051-LED-Blinking-All-Ports" 
+RAMSIZE(256) 
