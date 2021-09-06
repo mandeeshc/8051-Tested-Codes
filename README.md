@@ -6,5 +6,4 @@
 1) LED
 2) Switches
 3) 16x2 LCD
-4) 7 Segment Display
-5) 
+Work under Progress
