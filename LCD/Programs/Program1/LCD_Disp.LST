@@ -1,0 +1,105 @@
+C51 COMPILER V8.12   LCD_DISP                                                              07/03/2012 07:21:09 PAGE 1   
+
+
+C51 COMPILER V8.12, COMPILATION OF MODULE LCD_DISP
+OBJECT MODULE PLACED IN LCD_Disp.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LCD_Disp.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          // ***** Program to Display any character on the LCD ***** //
+   2          #include <REGX51.H>
+   3          #define LCD P0           // LCD data bus 
+   4          
+   5          sbit RS = P1^0;      // LCD Register Select
+   6          sbit RW = P1^1;          //     Read or Write
+   7          sbit EN = P1^2;      // LCD Enable
+   8          
+   9          void delay(int);
+  10          
+  11          void delay1(unsigned int);
+  12          void lcd_data(char);  // For display data
+  13          void lcd_cmd(char);       // For Commands to LCD controller
+  14          unsigned char disp[]={'C','M','C'};
+  15          
+  16          void lcd_init()           // Initialization Commands
+  17          {
+  18   1      RS=0;                             // Command Mode
+  19   1      lcd_cmd(0x38);            // 2 lines, 5*7 Matrix 
+  20   1      lcd_cmd(0x01);            // Clear the Display
+  21   1      lcd_cmd(0x0C);            // Display on Cursor off
+  22   1      lcd_cmd(0x06);            // Increment cursor
+  23   1      lcd_cmd(0x80);            // Force the cursor to the Beginning of New line  
+  24   1      EN=1;
+  25   1      delay(6);                         // High to Low pulse with a Delay
+  26   1      EN=0;
+  27   1      
+  28   1      }
+  29          
+  30          void lcd_data(char dta)
+  31          {
+  32   1      RS=1;                                   // Data Mode
+  33   1      LCD = dta;                              // Send the Data to be Displayed : P2
+  34   1      EN=1;
+  35   1      delay(6);                               // High to Low Pulse to Latch to the data
+  36   1      EN=0;
+  37   1      }
+  38          
+  39          void lcd_cmd(char cmd)
+  40          {
+  41   1      RS=0;                                   // Command Mode
+  42   1      LCD = cmd;                              // Send the Command to the Data Pins : P2
+  43   1      EN=1;
+  44   1      delay(6);                               // High to Low Pulse to latch to the data
+  45   1      EN=0;
+  46   1      }
+  47          
+  48          
+  49          void delay(int DD)
+  50          {
+  51   1      unsigned int i ,j;
+  52   1      for(i=1;i<=DD;i++)
+  53   1      {
+  54   2      for(j=1;j<=50;j++);
+  55   2      }
+C51 COMPILER V8.12   LCD_DISP                                                              07/03/2012 07:21:09 PAGE 2   
+
+  56   1      }
+  57          
+  58          void main(void)
+  59          {                                 // For writing on the LCD
+  60   1      unsigned int kk;
+  61   1      RW=0;
+  62   1      lcd_init();      
+  63   1      for(kk=0;kk<3;kk++)
+  64   1      {
+  65   2      lcd_data(disp[kk]);    // To Display "CMC"
+  66   2      }
+  67   1      }
+  68          
+  69           
+  70          
+  71          
+  72          
+  73          
+  74          
+  75          
+  76          
+  77          
+  78          
+  79          
+  80          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    129    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
