@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/02/2021  15:11:15  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/07/2021  15:08:56  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -52,14 +52,14 @@ SYMBOL TABLE OF MODULE:  LED_Blink (LED_BLINK)
 
   -------         MODULE        LED_BLINK
   C:0000H         SYMBOL        _ICE_DUMMY_
-  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
   C:0003H         PUBLIC        _delay
   C:0023H         PUBLIC        main
   -------         PROC          _DELAY
   D:0006H         SYMBOL        del
   -------         DO            
   D:0004H         SYMBOL        i
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/02/2021  15:11:15  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2021  15:08:56  PAGE 2
 
 
   D:0002H         SYMBOL        j

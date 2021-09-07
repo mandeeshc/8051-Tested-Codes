@@ -1,6 +1,6 @@
 // ***** Program to Blink Alternate LED's on Port 2 ***** //
 #include <REGX51.H>
-#define LED P0
+#define LED P2
 // Software Delay 
 void delay(unsigned int del)
 {
