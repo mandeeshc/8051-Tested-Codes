@@ -1,0 +1,60 @@
+C51 COMPILER V9.59.0.0   DISP                                                              09/09/2021 17:06:57 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE DISP
+OBJECT MODULE PLACED IN Disp.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Disp.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF Disp.c: SERIAL NUMBER EXPIRED
+   1          #include <REGX51.H>
+   2          sbit SEVa = P1^0;
+   3          sbit SEVb = P1^1;
+   4          sbit SEVc = P1^2;
+   5          sbit SEVd = P1^3;
+   6          sbit SEVe = P1^4;
+   7          sbit SEVf = P1^5;
+   8          sbit SEVg = P1^6;
+   9          
+  10          //sbit SW1 = P3^0;
+  11          //sbit SW2 = P3^1;
+  12          
+  13          void delay(unsigned int del)
+  14          {
+  15   1        unsigned int i,j;
+  16   1        for(i=0;i<=1275;i++)
+  17   1          for(j=0;j<=del;j++);
+  18   1      }
+  19          void main()
+  20          { 
+  21   1        P1= 0xff;
+  22   1        //  
+  23   1        while(1)
+  24   1        {
+  25   2          P1=0x48;    delay(50);
+  26   2          P1=0xed;    delay(50);
+  27   2          P1=0x98;    delay(50);
+  28   2          P1=0x89;    delay(50);
+  29   2          P1=0x2d;    delay(50);
+  30   2          P1=0x0b;    delay(50);
+  31   2          P1=0x0a;    delay(50);
+  32   2          P1=0xe9;    delay(50);
+  33   2          P1=0x08;    delay(50);
+  34   2          P1=0x09;    delay(50);
+  35   2        }
+  36   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    101    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

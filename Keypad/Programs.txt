@@ -1,0 +1,13 @@
+Keypad :-
+# 1 : WAP to Blink LED's according to corresponding Hex Value of the Key Pressed in the Following manner : 
+  if Key 1 --> 0x01
+  if Key 2 --> 0x02
+  .
+  .
+  . 
+  .
+  .
+  if Key 15 --> 0x0a
+  if Key 16 --> 0x10 
+
+
