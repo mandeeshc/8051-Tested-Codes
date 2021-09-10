@@ -14,3 +14,4 @@
 9) DC Motor
 10) Stepper Motor
 11) Interrupts
+12) ADC (Using ADC0804 & 0808)
