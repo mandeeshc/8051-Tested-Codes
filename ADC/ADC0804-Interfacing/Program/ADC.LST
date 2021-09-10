@@ -1,0 +1,134 @@
+C51 COMPILER V9.59.0.0   ADC                                                               09/10/2021 18:32:35 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ADC
+OBJECT MODULE PLACED IN ADC.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ADC.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF ADC.c: SERIAL NUMBER EXPIRED
+   1          #include<regx51.h>
+   2          #include "lcd.c"
+   3          sbit CS   = P1^7;
+   4          sbit RDD  = P1^2;
+   5          sbit WRT  = P1^3;
+   6          sbit INTR = P1^4;
+   7          
+   8          char arr[10];
+   9          int pos;
+  10          
+  11          void delay(unsigned int xdel)
+  12            {
+  13   1        unsigned int k,l;
+  14   1        for(k=0;k<=xdel;k++)
+  15   1           for(l=0;l<=200;l++);
+  16   1        }
+  17          
+  18          void store_arr(int val)
+  19            {
+  20   1        int in=0, v1 = 0;
+  21   1        pos=0;
+  22   1        for(in=0;in<=9;in++)
+  23   1          { 
+  24   2          arr[in]=' ';
+  25   2          }
+  26   1        in=0;
+  27   1        while(val!=0)
+  28   1          {
+  29   2            arr[in]=val%10;
+  30   2            arr[in]=arr[in]+48;
+  31   2            val=val/10;
+  32   2            in++;
+  33   2            pos++;  
+  34   2          }
+  35   1          for(v1=pos-1;v1>=0;v1--)
+  36   1          {
+  37   2          lcd_data(arr[v1]);
+  38   2          }
+  39   1        }
+  40            
+  41                                      
+  42          void main()
+  43            {
+  44   1        unsigned int value = 0, val1,loopv =0;
+  45   1        lcd_init();
+  46   1        main_lcd();
+  47   1        lcd_clr();
+  48   1        lcd_string("VALUE :");
+  49   1        while(1)
+  50   1        {
+  51   2        for(loopv=0;loopv<50;loopv++)
+  52   2          {
+  53   3          CS = 0;
+  54   3          WRT = 0;
+C51 COMPILER V9.59.0.0   ADC                                                               09/10/2021 18:32:35 PAGE 2   
+
+  55   3          delay(1);
+  56   3          WRT = 1;
+  57   3          CS = 1;
+  58   3          while(INTR==1);
+  59   3          CS = 0;
+  60   3          RDD = 0;
+  61   3          delay(1);
+  62   3          RDD = 1;
+  63   3          value = P3 + value;
+  64   3          CS = 1;
+  65   3          delay(5); 
+  66   3          }
+  67   2          value = value/50;
+  68   2          //P3=value;       // Debugging
+  69   2        if(value > 99 && val1 < 100 || value < 100 && val1 > 99)
+  70   2          {
+  71   3          lcd_cmd(0xC0);
+  72   3          lcd_string("                ");
+  73   3          }
+  74   2        lcd_cmd(0xC0);
+  75   2        //lcd_string("                ");
+  76   2        //lcd_cmd(0xC0);
+  77   2        val1 = value;
+  78   2        store_arr(value);
+  79   2        delay(50);
+  80   2        value = 0;  
+  81   2        }
+  82   1        }
+  83          
+  84          
+  85          
+  86          
+  87          
+  88          
+  89          
+  90          
+  91          
+  92          
+  93          
+  94          
+  95          
+  96          
+  97          
+  98          
+  99          
+ 100          
+ 101          
+ 102          
+ 103          
+ 104          
+ 105          
+ 106          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    526    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12      13
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.59.0.0   ADC                                                               09/10/2021 18:32:35 PAGE 3   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,133 @@
+C51 COMPILER V9.59.0.0   ADC_08                                                            09/10/2021 18:32:49 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ADC_08
+OBJECT MODULE PLACED IN adc_08.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE adc_08.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF adc_08.c: SERIAL NUMBER EXPIRED
+   1          // Program to test ADC 0808. The output pins are connected to LED's. 
+   2          //Controller interrupt is used to generate the clock for driving the ADC 0808.
+   3          #include <REGX51.H>
+   4          #include "lcd.c"
+   5          
+   6          sbit ale = P1^6;  //address latch enable
+   7          sbit oe  = P1^4;  //output enable
+   8          sbit sc  = P1^2;  //start conversion
+   9          sbit eoc = P1^3;  //end of conversion
+  10          sbit clk = P1^5;  // clock
+  11          
+  12          sbit ADD_A=P3^7;  // Address pins for selecting input channels.
+  13          sbit ADD_B=P3^6;
+  14          sbit ADD_C=P3^5;
+  15          
+  16          //sfr input_port=0x80;
+  17          //sfr output_port=0xA0;
+  18          char arr[10];
+  19          int pos;
+  20          
+  21          void timer0() interrupt 1  // Function to generate clock of frequency 500KHZ using Timer 0 interrupt.
+  22          {
+  23   1      clk=~clk;
+  24   1      }
+  25          
+  26          void delay(unsigned int count)  // Function to provide time delay in msec.
+  27          {
+  28   1      int i,j;
+  29   1      for(i=0;i<count;i++)
+  30   1        for(j=0;j<1275;j++);
+  31   1      }
+  32          
+  33          void store_arr(int val)
+  34            {
+  35   1        int in=0, v1 = 0;
+  36   1        pos=0;
+  37   1        for(in=0;in<=9;in++)
+  38   1          { 
+  39   2          arr[in]=' ';
+  40   2          }
+  41   1        in=0;
+  42   1        while(val!=0)
+  43   1          {
+  44   2            arr[in]=val%10;
+  45   2            arr[in]=arr[in]+48;
+  46   2            val=val/10;
+  47   2            in++;
+  48   2            pos++;  
+  49   2          }
+  50   1          for(v1=pos-1;v1>=0;v1--)
+  51   1          {
+  52   2          lcd_data(arr[v1]);
+  53   2          }
+  54   1        }
+C51 COMPILER V9.59.0.0   ADC_08                                                            09/10/2021 18:32:49 PAGE 2   
+
+  55          
+  56          void adc_clk()
+  57          {
+  58   1      TMOD=0x22;  //timer0 setting for generating clock of 500KHz using interrupt enable mode.
+  59   1      TH0=0xFD;
+  60   1      IE=0x82;
+  61   1      TR0=1;
+  62   1      }
+  63          
+  64          void main()
+  65          {
+  66   1      unsigned int value,val1;
+  67   1      lcd_init();
+  68   1      eoc=1;
+  69   1      ale=0;
+  70   1      oe=0;
+  71   1      sc=0;
+  72   1      adc_clk();
+  73   1      lcd_clr();
+  74   1      lcd_string("VALUE :");
+  75   1      lcd_cmd(0xC0);
+  76   1      while(1)
+  77   1      {
+  78   2        ADD_C=0;  // Selecting input channel 0 using address lines
+  79   2        ADD_B=0;
+  80   2        ADD_A=0;
+  81   2        delay(1);
+  82   2        ale=1;
+  83   2        delay(1);
+  84   2        sc=1;
+  85   2        delay(1);
+  86   2        ale=0;
+  87   2        delay(1);
+  88   2        sc=0;
+  89   2        while(eoc==1);
+  90   2        while(eoc==0);
+  91   2        oe=1;
+  92   2        value = P2; // P2 --> Data Port for ADC
+  93   2        //output_port=input_port;
+  94   2        if(value > 99 && val1 < 100 || value < 100 && val1 > 99)
+  95   2        {
+  96   3        lcd_cmd(0xC0);
+  97   3        lcd_string("                ");
+  98   3        }
+  99   2        lcd_cmd(0xC0);
+ 100   2        store_arr(value);
+ 101   2        //delay(1);
+ 102   2        val1 = value;
+ 103   2        oe=0;
+ 104   2      }
+ 105   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    494    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12      11
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.59.0.0   ADC_08                                                            09/10/2021 18:32:49 PAGE 3   
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

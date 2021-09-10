@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"adc_08.obj" 
+TO "ADC_0808_09" 
+RAMSIZE(256) 
