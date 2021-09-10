@@ -1,0 +1,47 @@
+C51 COMPILER V9.59.0.0   1                                                                 09/10/2021 13:37:29 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE 1
+OBJECT MODULE PLACED IN 1.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF 1.c: SERIAL NUMBER EXPIRED
+   1          // ***** Program to Blink Alternate LED's on Port 0 Using Timer1 : Mode 1 ***** //
+   2          #include <REGX51.H>
+   3          #define LED P0
+   4          void delay_timer()
+   5          {
+   6   1        TMOD = 0x10;      // Mode 1 - 16 Bit Non Autoreload Mode, Timer1
+   7   1        TH1  = 0xEE;      // Higher Byte Value Loaded in TH1
+   8   1        TL1  = 0x00;      // Lower  Byte  Value  Loaded in TL1
+   9   1        TR1  = 1;       // Starting the Timer
+  10   1        while(TF1==0);      // Waiting for Timer Overflow Flag to be Set
+  11   1        TR1  = 0;       // Clearing the Timer
+  12   1        TF1  = 0;       // Clearing the Overflow Flag
+  13   1      }
+  14          void main()
+  15          {
+  16   1        while(1)
+  17   1        {
+  18   2          LED=0xaa;
+  19   2          delay_timer();  // Timer Delay for Precise 5 ms
+  20   2          LED=0x55;
+  21   2          delay_timer();  // Timer Delay for Precise 5 ms
+  22   2         }
+  23   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     33    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

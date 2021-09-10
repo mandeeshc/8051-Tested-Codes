@@ -1,0 +1,58 @@
+C51 COMPILER V9.59.0.0   DCM                                                               09/10/2021 13:32:37 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE DCM
+OBJECT MODULE PLACED IN DCM.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE DCM.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF DCM.c: SERIAL NUMBER EXPIRED
+   1          #include <REGX51.H>
+   2          sbit MOT1P = P1^0;
+   3          sbit MOT1N = P1^1;
+   4          sbit MOT2P = P1^2;
+   5          sbit MOT2N = P1^3;
+   6          sbit SW1 = P3^0;
+   7          sbit SW2 = P3^1;
+   8          void delay(unsigned int del)
+   9          {
+  10   1        unsigned int i,j;
+  11   1        for(i=0;i<=1275;i++)
+  12   1          for(j=0;j<=del;j++);
+  13   1      }
+  14          void main()
+  15          { 
+  16   1        P1= 0x00;
+  17   1        while(1)
+  18   1        {
+  19   2          if(SW1==0)
+  20   2          {
+  21   3            delay(5);
+  22   3            MOT1P=1;
+  23   3            MOT1N=0;
+  24   3          }
+  25   2          else if(SW2==0)
+  26   2          {
+  27   3            delay(5);
+  28   3            MOT1P=0;
+  29   3            MOT1N=1;
+  30   3          }
+  31   2          else   
+  32   2           P1=0x00;  
+  33   2        }
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     72    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

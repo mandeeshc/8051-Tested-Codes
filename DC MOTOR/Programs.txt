@@ -1,0 +1,7 @@
+# 1 : WAP to Rotate DC Motor (in any Direction) on a Switch Press
+# 2 : WAP to Rotate DC Motor in CC and AC Direction depending on Sw1 or Sw2 pressed.
+# 3 : WAP to Rotate DC Motor in varying Speeds as following :
+	25% - Sw1
+	50% - Sw2
+	75% - Sw3
+       100% - Sw4
