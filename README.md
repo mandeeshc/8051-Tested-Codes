@@ -8,4 +8,9 @@
 3) 16x2 LCD
 4) 7 Segment Display
 5) 4x4 Keypad Matrix
-Work under Progress
+6) Relay | Buzzer
+7) Timers & Counters
+8) UART
+9) DC Motor
+10) Stepper Motor
+11) Interrupts
